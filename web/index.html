@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ESP32 WebSocket Telemetry</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/uplot@1.6.31/dist/uPlot.min.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>ESP32 Telemetry Dashboard</h1>
+
+      <section class="status-row">
+        <span id="statusDot" class="dot offline"></span>
+        <span id="statusText">Disconnected</span>
+        <span id="frameCount">Frame: 0</span>
+      </section>
+
+      <section class="controls">
+        <label>
+          Command to ESP32
+          <input id="cmdInput" type="text" placeholder="contoh: kp=0.15" />
+        </label>
+        <button id="sendCmdBtn">Send</button>
+        <button id="csvStartBtn">Start CSV</button>
+        <button id="csvStopBtn">Stop CSV</button>
+      </section>
+
+      <section id="plotWrap" class="panel">
+        <div id="plot"></div>
+      </section>
+
+      <section class="panel">
+        <h2>20 Data Terakhir</h2>
+        <div class="table-wrap">
+          <table id="dataTable">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel log-panel">
+        <h2>Log</h2>
+        <pre id="log"></pre>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/uplot@1.6.31/dist/uPlot.iife.min.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
