@@ -1,0 +1,68 @@
+/* -----------------------------
+   Gaya dasar halaman dashboard
+------------------------------ */
+body {
+  font-family: Arial, sans-serif;
+  margin: 16px;
+  background: #f7f9fc;
+  color: #1d2733;
+}
+
+h1, h2 {
+  margin: 8px 0 12px;
+}
+
+#statusBar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.panel {
+  background: white;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 14px;
+}
+
+.controls button {
+  margin-right: 8px;
+  margin-bottom: 6px;
+}
+
+.settings > div {
+  margin-bottom: 10px;
+}
+
+#varToggles label {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+#chart {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #d9e2ec;
+  padding: 6px 8px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+th:first-child,
+td:first-child {
+  text-align: left;
+}

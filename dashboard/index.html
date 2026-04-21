@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ESP32 Telemetry Dashboard</title>
+
+  <!-- uPlot CSS dari CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/uplot/dist/uPlot.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>ESP32 Real-Time Dashboard</h1>
+
+  <!-- Informasi status koneksi websocket dan recording -->
+  <div id="statusBar">
+    <span id="espStatus">ESP: disconnected</span>
+    <span id="recStatus">REC: idle</span>
+  </div>
+
+  <!-- Kontrol utama sesuai spesifikasi -->
+  <section class="panel controls">
+    <button id="btnPause">Pause</button>
+    <button id="btnResume" disabled>Resume</button>
+    <button id="btnZoomIn">Zoom In</button>
+    <button id="btnZoomOut">Zoom Out</button>
+    <button id="btnRecStart">Start Recording</button>
+    <button id="btnRecStop">Stop Recording</button>
+  </section>
+
+  <!-- Pengaturan visualisasi -->
+  <section class="panel settings">
+    <div>
+      <strong>X-axis mode:</strong>
+      <label><input type="radio" name="xmode" value="index" checked /> Frame index</label>
+      <label><input type="radio" name="xmode" value="elapsed" /> Elapsed time (s)</label>
+    </div>
+
+    <div>
+      <strong>Y-axis:</strong>
+      <label><input type="radio" name="yscale" value="auto" checked /> Auto</label>
+      <label><input type="radio" name="yscale" value="manual" /> Manual</label>
+      <label>Min <input id="yMin" type="number" step="any" value="-1" /></label>
+      <label>Max <input id="yMax" type="number" step="any" value="1" /></label>
+    </div>
+
+    <!-- Container checkbox variabel dibentuk dinamis dari HEADER -->
+    <div>
+      <strong>Variable visibility:</strong>
+      <div id="varToggles"></div>
+    </div>
+  </section>
+
+  <!-- Area plotter realtime -->
+  <section class="panel">
+    <h2>Serial Plotter</h2>
+    <div id="chart"></div>
+  </section>
+
+  <!-- Tabel data 20 frame terakhir -->
+  <section class="panel">
+    <h2>Last 20 Frames</h2>
+    <div class="tableWrap">
+      <table id="dataTable">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- uPlot JS dari CDN -->
+  <script src="https://unpkg.com/uplot/dist/uPlot.iife.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
