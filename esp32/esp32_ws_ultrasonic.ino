@@ -9,9 +9,9 @@
 #include <WiFi.h>
 #include <WebSocketsClient.h>
 
-const char* WIFI_SSID = "YOUR_WIFI_SSID";
-const char* WIFI_PASS = "YOUR_WIFI_PASSWORD";
-const char* WS_HOST = "192.168.1.10";   // ganti dengan IP laptop
+const char* WIFI_SSID = "XxX";
+const char* WIFI_PASS = "12345678";
+const char* WS_HOST = "10.47.100.165";   // ganti dengan IP laptop
 const uint16_t WS_PORT = 8765;
 const char* WS_PATH = "/esp";
 
