@@ -26,14 +26,14 @@
 // -------------------------
 // Konfigurasi jaringan Wi-Fi
 // -------------------------
-const char* WIFI_SSID = "YOUR_WIFI_SSID";
-const char* WIFI_PASS = "YOUR_WIFI_PASSWORD";
+const char* WIFI_SSID = "XxX";
+const char* WIFI_PASS = "12345678";
 
 // --------------------------------------------
 // Konfigurasi endpoint websocket pada laptop
 // ws://[laptopIP]:8765/esp
 // --------------------------------------------
-const char* LAPTOP_IP = "192.168.1.100";
+const char* LAPTOP_IP = "10.47.100.165";
 const uint16_t WS_PORT = 8765;
 const char* WS_PATH = "/esp";
 
