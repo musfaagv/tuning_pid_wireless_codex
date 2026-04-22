@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ESP32 Telemetry Dashboard</title>
+
+    <!-- uPlot styles + script loaded from CDN (no build step). -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uplot@1.6.31/dist/uPlot.min.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>ESP32 Real-Time Telemetry Dashboard</h1>
+
+      <!-- Top control bar for runtime interaction. -->
+      <section class="controls">
+        <button id="pauseBtn">Pause</button>
+        <button id="zoomInBtn">Zoom In</button>
+        <button id="zoomOutBtn">Zoom Out</button>
+        <button id="recordStartBtn">Start Recording</button>
+        <button id="recordStopBtn">Stop Recording</button>
+
+        <label class="inline-field" for="cmdInput">CMD</label>
+        <input id="cmdInput" type="text" placeholder="e.g. kp=1.25" />
+        <button id="sendCmdBtn">Send CMD</button>
+      </section>
+
+      <!-- Settings panel for graph behavior and axis logic. -->
+      <section class="panel" id="settingsPanel">
+        <h2>Settings</h2>
+
+        <div class="settings-grid">
+          <div>
+            <label for="xModeSelect">X-axis mode</label>
+            <select id="xModeSelect">
+              <option value="frame">Frame index</option>
+              <option value="millis">Time (millis)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="visiblePointsInput">Visible points</label>
+            <input id="visiblePointsInput" type="number" min="20" max="5000" value="200" />
+          </div>
+
+          <div>
+            <label for="yScaleModeSelect">Y-axis scale</label>
+            <select id="yScaleModeSelect">
+              <option value="auto">Auto</option>
+              <option value="manual">Manual</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="yMinInput">Y Min</label>
+            <input id="yMinInput" type="number" value="0" />
+          </div>
+
+          <div>
+            <label for="yMaxInput">Y Max</label>
+            <input id="yMaxInput" type="number" value="100" />
+          </div>
+        </div>
+
+        <!-- Dynamic variable visibility checkboxes are generated here. -->
+        <div id="variableToggles" class="toggles"></div>
+      </section>
+
+      <!-- uPlot graph area (serial plotter style). -->
+      <section class="panel">
+        <h2>Graph</h2>
+        <div id="status">Status: disconnected</div>
+        <div id="plot"></div>
+      </section>
+
+      <!-- Last 20 frames table, synchronized with incoming telemetry. -->
+      <section class="panel">
+        <h2>Last 20 Frames</h2>
+        <div class="table-wrap">
+          <table id="dataTable">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/uplot@1.6.31/dist/uPlot.iife.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
